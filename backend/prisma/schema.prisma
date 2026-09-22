@@ -1,0 +1,59 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Learner {
+  id          Int              @id @default(autoincrement())
+  name        String
+  email       String           @unique
+  createdAt   DateTime         @default(now())
+  enrollments Enrollment[]
+  progress    LessonProgress[]
+}
+
+model Course {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  lessons     Lesson[]
+  enrollments Enrollment[]
+}
+
+model Lesson {
+  id          Int              @id @default(autoincrement())
+  courseId    Int
+  title       String
+  content     String
+  orderIndex  Int
+  course      Course           @relation(fields: [courseId], references: [id])
+  progress    LessonProgress[]
+
+  @@unique([courseId, orderIndex])
+}
+
+model Enrollment {
+  id         Int      @id @default(autoincrement())
+  learnerId  Int
+  courseId   Int
+  enrolledAt DateTime @default(now())
+  learner    Learner  @relation(fields: [learnerId], references: [id])
+  course     Course   @relation(fields: [courseId], references: [id])
+
+  @@unique([learnerId, courseId])
+}
+
+model LessonProgress {
+  id          Int      @id @default(autoincrement())
+  learnerId   Int
+  lessonId    Int
+  completedAt DateTime @default(now())
+  learner     Learner  @relation(fields: [learnerId], references: [id])
+  lesson      Lesson   @relation(fields: [lessonId], references: [id])
+
+  @@unique([learnerId, lessonId])
+}
