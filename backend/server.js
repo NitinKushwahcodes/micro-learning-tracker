@@ -14,6 +14,13 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Micro-Learning Progress Tracker API is running'
+  });
+});
+
 app.use('/api/learners', learnerRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/enroll', enrollRoutes);
