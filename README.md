@@ -9,11 +9,12 @@
 
 | Service | Live URL | Status |
 | :--- | :--- | :--- |
+| 💻 **Frontend Demo App** | [https://micro-learning-tracker-nine.vercel.app](https://micro-learning-tracker-nine.vercel.app) | `Active (Vercel)` |
 | 🚀 **Backend API** | [https://micro-learning-tracker-s2le.onrender.com](https://micro-learning-tracker-s2le.onrender.com) | `Active (Render)` |
 | 📡 **API Learners Endpoint** | [https://micro-learning-tracker-s2le.onrender.com/api/learners](https://micro-learning-tracker-s2le.onrender.com/api/learners) | `Active` |
 | 📚 **API Courses Endpoint** | [https://micro-learning-tracker-s2le.onrender.com/api/courses](https://micro-learning-tracker-s2le.onrender.com/api/courses) | `Active` |
 
-> ℹ️ *Note for Reviewers*: The backend is hosted on Render free tier. If the initial request takes a few seconds, the server instance is waking up from idle state.
+> ℹ️ *Note for Reviewers*: The backend is hosted on Render free tier. If the initial API request takes a few seconds, the server instance is waking up from idle state.
 
 ---
 
